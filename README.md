@@ -1,5 +1,8 @@
 # fn-pipe
-Functions pipeline for golang
+
+[![CircleCI](https://circleci.com/gh/open-zhy/fn-pipe.svg?style=svg)](https://circleci.com/gh/open-zhy/fn-pipe)
+
+Functions pipeline for golang projects
 
 ## Basic Usage
 ```go
@@ -17,3 +20,7 @@ Functions pipeline for golang
     // output the result which should be fn2(fn1(...args))
     err, res := p.ExecWith(0) // res = [-25]
 ```
+
+
+## Contributing
+Please follow this [link](https://github.com/open-zhy/fn-pipe/blob/master/CONTRIBUTING.md)
