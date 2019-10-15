@@ -5,10 +5,14 @@ import (
 	"reflect"
 )
 
+// Main object of the library
+// this will abstract the behavior of the whole pipeline object
 type Pipe struct {
 	ls []interface{}
 }
 
+// Create new Pipe object by providing a list of functions
+// that will be performed inside the pipeline
 func NewPipeline(ls ...interface{}) (*Pipe, error) {
 	var pipe []interface{}
 
@@ -25,6 +29,7 @@ func NewPipeline(ls ...interface{}) (*Pipe, error) {
 	return p, nil
 }
 
+// Add new function on bottom position
 func (p *Pipe) Add(pf interface{}) error {
 	if reflect.ValueOf(pf).Type().Kind() != reflect.Func {
 		return fmt.Errorf("pipe func should be type Func")
@@ -35,6 +40,8 @@ func (p *Pipe) Add(pf interface{}) error {
 	return nil
 }
 
+// Execute the pipeline with any input, be aware that the arguments should match with the top position
+// function configured with the pipeline
 func (p *Pipe) ExecWith(input ...interface{}) (error, interface{}) {
 	var output []interface{}
 
